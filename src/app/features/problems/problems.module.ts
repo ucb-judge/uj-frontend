@@ -16,6 +16,7 @@ import { CodeEditorModule } from '@ngstack/code-editor';
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     CodeEditorModule.forRoot(),
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTooltipModule
   ]
 })
 export class ProblemsModule { }

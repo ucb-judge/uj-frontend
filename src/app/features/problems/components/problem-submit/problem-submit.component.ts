@@ -6,7 +6,7 @@ import {CodeModel} from "@ngstack/code-editor";
 import {UjProblemsService} from "../../../../core/services/uj-problems.service";
 import {ProblemDto} from "../../models/problem.dto";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {SubmissionDto} from "../../models/submission.dto";
+import {SubmissionReqDto} from "../../models/submission.req.dto";
 
 @Component({
   selector: 'app-problem-submit',
@@ -56,7 +56,7 @@ export class ProblemSubmitComponent implements OnInit {
   ) {
     this.problemId = this.activatedRoute.snapshot.params['id'];
     this.contestId = this.router.getCurrentNavigation()?.extras.state?.['contestId'];
-    this.submissionForm = this.formBuilder.group<SubmissionDto>({
+    this.submissionForm = this.formBuilder.group<SubmissionReqDto>({
       problemId: Number(this.problemId),
       contestId: Number(this.contestId) || null,
       sourceCode: this.codeModel.value,
@@ -66,17 +66,15 @@ export class ProblemSubmitComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.admittedLanguages == null) {
-      this.ujProblemsService.getProblemById(this.problemId).subscribe({
-        next: (response) => {
-          this.problem = response.data!!;
-          this.admittedLanguages = this.problem.admittedLanguages;
-        },
-        error: (error) => {
-          console.error(error);
-        }
-      });
-    }
+    this.ujProblemsService.getProblemById(this.problemId).subscribe({
+      next: (response) => {
+        this.problem = response.data!!;
+        this.admittedLanguages = this.problem.admittedLanguages;
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
   }
 
   onCodeChanged(event: any) {
@@ -95,7 +93,7 @@ export class ProblemSubmitComponent implements OnInit {
   submitForm() {
     this.ujSubmissionsService.createSubmission(this.submissionForm.value).subscribe({
       next: (response) => {
-
+        this.router.navigate([`/submissions/${response.data}`]);
       },
       error: (error) => {
         console.error(error);
