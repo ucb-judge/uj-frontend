@@ -2,8 +2,8 @@
 <div class="problem-details-container">
   <div class="problem-details-description"><h1 class="problem-title">{{problem.title}}</h1>
     <section class="limit-section">
-      <span>Tiempo límite: {{problem.timeLimit}}</span>
-      <span>Memoria límite: {{problem.memoryLimit}}</span>
+      <span>Tiempo límite: {{problem.timeLimit}}s</span>
+      <span>Memoria límite: {{problem.memoryLimit}}MB</span>
     </section>
     <hr>
     <section>
@@ -38,7 +38,7 @@
       </div>
     </section>
     <div class="submit">
-      <button class="submit-button" mat-raised-button color="primary">Enviar solución</button>
+      <button (click)="goToSubmit()" class="submit-button" mat-raised-button color="primary">Enviar solución</button>
     </div>
   </div>
   <div class="problem-details-metadata">

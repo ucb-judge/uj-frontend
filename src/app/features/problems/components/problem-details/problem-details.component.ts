@@ -62,4 +62,13 @@ export class ProblemDetailsComponent implements OnInit {
     })
   }
 
+  goToSubmit() {
+    this.router.navigate([`/problems/${this.problemId}/submit`], {
+      state: {
+        problemId: this.problemId,
+        contestId: this.contestId,
+        admittedLanguages: this.problem.admittedLanguages
+      }
+    })
+  }
 }
