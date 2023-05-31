@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UjProblemsService } from "../../../../core/services/uj-problems.service";
 import {ProblemTableDataDto} from "../../models/problem.table.data.dto";
 import {PageEvent} from "@angular/material/paginator";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-problem-list',
@@ -14,7 +15,10 @@ export class ProblemListComponent implements OnInit {
   size: number = 10;
   total: number = 0;
 
-  constructor(private ujProblemsService: UjProblemsService) { }
+  constructor(
+    private ujProblemsService: UjProblemsService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loadProblems();
@@ -23,7 +27,6 @@ export class ProblemListComponent implements OnInit {
   loadProblems() {
     this.ujProblemsService.getAllProblems(this.page, this.size).subscribe({
       next: (response) => {
-        console.log(response);
         this.problems = response.data!.content;
         this.total = response.data!.totalElements;
       },
@@ -40,6 +43,11 @@ export class ProblemListComponent implements OnInit {
   }
 
   goToProblem(id: number) {
-    console.log("Go to problem with id: " + id);
+    this.router.navigate([`/problems/${id}`], {
+      state: {
+        problemId: id,
+        contestId: null
+      }
+    })
   }
 }
