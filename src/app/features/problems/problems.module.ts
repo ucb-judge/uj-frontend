@@ -8,6 +8,8 @@ import { ProblemSubmitComponent } from './components/problem-submit/problem-subm
 import { ProblemResultsComponent } from './components/problem-results/problem-results.component';
 import { ProblemSubmittedListComponent } from './components/problem-submitted-list/problem-submitted-list.component';
 import { SharedModule } from "../../shared/shared.module";
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { SharedModule } from "../../shared/shared.module";
   imports: [
     CommonModule,
     ProblemsRoutingModule,
-    SharedModule
+    SharedModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class ProblemsModule { }
