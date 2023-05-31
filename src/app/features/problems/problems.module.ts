@@ -10,6 +10,8 @@ import { ProblemSubmittedListComponent } from './components/problem-submitted-li
 import { SharedModule } from "../../shared/shared.module";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatButtonModule} from "@angular/material/button";
+import {MatChipsModule} from "@angular/material/chips";
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     ProblemsRoutingModule,
     SharedModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatButtonModule,
+    MatChipsModule
   ]
 })
 export class ProblemsModule { }
