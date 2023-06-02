@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UjCampusService} from "../../../../core/services/uj-campus.service";
 import {UjCampusMajorService} from "../../../../core/services/uj-campus-major.service";
 import {CampusDto} from "../../models/campus.dto";
@@ -22,12 +22,13 @@ export class AccountRegisterComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       username: ['', Validators.required],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.min(10), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])')]],
       confirmPassword: ['', [Validators.required]],
       campus: ['', Validators.required],
       major: ['', Validators.required],
     });
   }
+
   ngOnInit(): void {
     this.ujCampusService.getCampuses().subscribe({
       next: (data) => {
@@ -56,7 +57,7 @@ export class AccountRegisterComponent implements OnInit {
     });
   }
 
-    onCampusChange(event:any) {
+  onCampusChange(event: any) {
     console.log(event.value);
     console.log('event :' + event.value);
     this.ujCampusMajorService.getMajorsByCampusId(event.value).subscribe({
@@ -79,10 +80,12 @@ export class AccountRegisterComponent implements OnInit {
     this.selectedCampusMajorId = event.value;
     console.log(this.selectedCampusMajorId);
   }
+
   onSubmit() {
     if (this.registerForm.valid) {
       console.log(this.registerForm.value);
       // You can perform registration logic here
     }
   }
+
 }

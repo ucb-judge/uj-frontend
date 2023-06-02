@@ -9,26 +9,59 @@
         <mat-card-content>
           <div class="name-section">
             <mat-form-field>
-              <input matInput formControlName="firstName" placeholder="First Name" />
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="firstName" placeholder="Nombre" />
+              <mat-error *ngIf="registerForm.controls.firstName.hasError('required')">
+                El nombre es requerido
+              </mat-error>
             </mat-form-field>
             <mat-form-field>
-              <input matInput formControlName="lastName" placeholder="Last Name" />
+              <mat-label>Apellido</mat-label>
+              <input matInput formControlName="lastName" placeholder="Apellido" />
+              <mat-error *ngIf="registerForm.controls.lastName.hasError('required')">
+                El apellido es requerido
+              </mat-error>
             </mat-form-field>
           </div>
-
           <mat-form-field>
-            <input matInput formControlName="email" placeholder="Email" />
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput formControlName="email" placeholder="Correo Electrónico" />
+            <mat-error *ngIf="registerForm.controls.email.hasError('required')">
+              El correo electrónico es requerido
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls.email.hasError('email')">
+              El correo electrónico no es válido
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input matInput formControlName="username" placeholder="Username" />
+            <mat-label>Nombre de Usuario</mat-label>
+            <input matInput formControlName="username" placeholder="Nombre de Usuario" />
+            <mat-error *ngIf="registerForm.controls.username.hasError('required')">
+              El nombre de usuario es requerido
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input matInput formControlName="password" type="password" placeholder="Password" />
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" type="password" placeholder="Contraseña" />
+            <mat-error *ngIf="registerForm.controls.password.hasError('required')">
+              La contraseña es requerida
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls.password.hasError('minlength')">
+              La contraseña debe tener al menos 10 caracteres
+            </mat-error>
+            <mat-error *ngIf="registerForm.controls.password.hasError('pattern')">
+              La contraseña debe tener al menos una letra mayúscula, una letra minúscula, un número y un caracter especial
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input matInput formControlName="confirmPassword" type="password" placeholder="Confirm Password" />
+            <mat-label>Confirmar Contraseña</mat-label>
+            <input matInput formControlName="confirmPassword" type="password" placeholder="Confirmar Contraseña" />
+            <mat-error *ngIf="registerForm.controls.confirmPassword.hasError('required')">
+              La confirmación de contraseña es requerida
+            </mat-error>
           </mat-form-field>
           <mat-form-field>
+            <mat-label>Sede</mat-label>
             <mat-select formControlName="campus" placeholder="Campus" (selectionChange)="onCampusChange($event)">
               <mat-option *ngFor="let campus of campuses" [value]="campus.campusId" >
                 {{ campus.name }}
@@ -36,6 +69,7 @@
             </mat-select>
           </mat-form-field>
           <mat-form-field>
+            <mat-label>Carrera</mat-label>
             <mat-select formControlName="major" placeholder="Major" (selectionChange)="onMajorChange($event)">
               <mat-option *ngFor="let campusMajor of campusesMajors" [value]="campusMajor.campusMajorId" >
                 {{ campusMajor.major.name }}
@@ -43,7 +77,8 @@
             </mat-select>
           </mat-form-field>
           <button mat-raised-button color="primary" type="submit">Registrarse</button>
-          <a routerLink="/login" mat-button color="accent">Ya tienes una cuenta? Inicia Sesión</a>
+          <a routerLink="/problems" mat-button color="accent" class="login-link">Ya tienes una cuenta? Inicia Sesión</a>
+          <button mat-button color="primary" routerLink="/">Regresar a la página de inicio</button>
         </mat-card-content>
       </mat-card>
     </form>
