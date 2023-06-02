@@ -2,19 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
+import { MatButtonModule } from '@angular/material/button';
+import { NotFoundComponent } from './components/not-found/not-found.component'; 
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import {MatCardModule} from "@angular/material/card";
+import {RouterLink} from "@angular/router";
 
 
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    NotFoundComponent,
+    ForbiddenComponent
   ],
   imports: [
     CommonModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    RouterLink
   ],
-  exports: [NavbarComponent]
+  exports: [NavbarComponent, NotFoundComponent, ForbiddenComponent]
 })
 export class SharedModule { }

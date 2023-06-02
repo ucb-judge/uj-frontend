@@ -8,6 +8,9 @@ import { AccountProfileUpdateComponent } from './components/account-profile-upda
 import { SharedModule } from 'src/app/shared/shared.module';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
+import {ProblemsModule} from "../problems/problems.module";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import {MatButtonModule} from "@angular/material/button";
     AccountsRoutingModule,
     SharedModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    ProblemsModule,
+    MatPaginatorModule,
+    MatTableModule
   ]
 })
 export class AccountsModule { }

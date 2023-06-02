@@ -7,10 +7,10 @@ import {ProblemSubmitComponent} from "./components/problem-submit/problem-submit
 import {ProblemResultsComponent} from "./components/problem-results/problem-results.component";
 
 const routes: Routes = [
-  { path: 'problems', component: ProblemListComponent},//, canActivate: [AuthGuard] },
-  { path: 'problems/:id', component: ProblemDetailsComponent},//, canActivate: [AuthGuard] },
-  { path: 'problems/:id/submit', component: ProblemSubmitComponent},//, canActivate: [AuthGuard] },
-  { path: 'submissions/:id', component: ProblemResultsComponent},//, canActivate: [AuthGuard] },
+  { path: 'problems', component: ProblemListComponent, canActivate: [AuthGuard] },
+  { path: 'problems/:id', component: ProblemDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'problems/:id/submit', component: ProblemSubmitComponent, canActivate: [AuthGuard] },
+  { path: 'submissions/:id', component: ProblemResultsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

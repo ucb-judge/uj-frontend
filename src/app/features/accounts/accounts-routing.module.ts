@@ -7,9 +7,9 @@ import { AccountProfileUpdateComponent } from './components/account-profile-upda
 
 const routes: Routes = [
   { path: 'homepage', component: HomePageComponent },
-  { path: 'sigup', component: AccountRegisterComponent },
+  { path: 'signup', component: AccountRegisterComponent },
   { path: 'profile', component: AccountProfileComponent },
-  { path: 'profile/update', component: AccountProfileUpdateComponent },  
+  { path: 'profile/update', component: AccountProfileUpdateComponent },
   { path: 'profile/change-password', component: AccountRegisterComponent },
 ];
 @NgModule({

@@ -20,26 +20,29 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
-  declarations: [
-    ProblemListComponent,
-    ProblemDetailsComponent,
-    ProblemSubmitComponent,
-    ProblemResultsComponent,
-    ProblemSubmittedListComponent
-  ],
-  imports: [
-    CommonModule,
-    ProblemsRoutingModule,
-    SharedModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    MatChipsModule,
-    CodeEditorModule.forRoot(),
-    MatInputModule,
-    MatSelectModule,
-    ReactiveFormsModule,
-    MatTooltipModule
-  ]
+    declarations: [
+        ProblemListComponent,
+        ProblemDetailsComponent,
+        ProblemSubmitComponent,
+        ProblemResultsComponent,
+        ProblemSubmittedListComponent
+    ],
+    exports: [
+        ProblemListComponent
+    ],
+    imports: [
+        CommonModule,
+        ProblemsRoutingModule,
+        SharedModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        MatChipsModule,
+        CodeEditorModule.forRoot(),
+        MatInputModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+        MatTooltipModule
+    ]
 })
 export class ProblemsModule { }

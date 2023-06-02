@@ -19,21 +19,21 @@
   background-color: #673AB7;
 }
 
-h4 {
+.container h4{
   font-size: 24px;
   font-weight: 400;
   color: #FFF;
   margin-bottom: 30px !important;
 }
 
-h1 {
+.container h1 {
   font-size: 48px;
   font-weight: 700;
   color: #FFF;
   margin-bottom: 30px !important;
 }
 
-p {
+.container p {
   font-size: 20px;
   color: #FFF;
   line-height: 1.5;
@@ -50,4 +50,42 @@ p {
 .button-container button {
   font-size: 18px;
   margin-right: 20px;
+}
+/* Title */
+.custom-card {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.paragraph {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/*Problem List Table*/
+.problem-table {
+  width: 70%;
+  margin: 2rem auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: lightgray;
 }
