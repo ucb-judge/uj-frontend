@@ -1,1 +1,51 @@
-<p>account-register works!</p>
+<div class="register-container">
+  <div class="image-section">
+    <img src="/assets/images/register-bg.png" alt="Registration Image" />
+  </div>
+  <div class="form-section">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <mat-card>
+        <mat-card-title>Formulario de Registro</mat-card-title>
+        <mat-card-content>
+          <div class="name-section">
+            <mat-form-field>
+              <input matInput formControlName="firstName" placeholder="First Name" />
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput formControlName="lastName" placeholder="Last Name" />
+            </mat-form-field>
+          </div>
+
+          <mat-form-field>
+            <input matInput formControlName="email" placeholder="Email" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="username" placeholder="Username" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="password" type="password" placeholder="Password" />
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput formControlName="confirmPassword" type="password" placeholder="Confirm Password" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select formControlName="campus" placeholder="Campus" (selectionChange)="onCampusChange($event)">
+              <mat-option *ngFor="let campus of campuses" [value]="campus.campusId" >
+                {{ campus.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select formControlName="major" placeholder="Major" (selectionChange)="onMajorChange($event)">
+              <mat-option *ngFor="let campusMajor of campusesMajors" [value]="campusMajor.campusMajorId" >
+                {{ campusMajor.major.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit">Registrarse</button>
+          <a routerLink="/login" mat-button color="accent">Ya tienes una cuenta? Inicia Sesión</a>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>

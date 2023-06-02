@@ -11,6 +11,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {ProblemsModule} from "../problems/problems.module";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import {MatTableModule} from "@angular/material/table";
     MatButtonModule,
     ProblemsModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class AccountsModule { }
