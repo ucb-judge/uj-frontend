@@ -41,15 +41,15 @@ export class UjUsersService {
     return this.http.get<ResponseDto<KeycloakUserDto>>(`${this.baseUrl}/users/profile/${userId}`);
   }
 
-  public updateUser(userId: String, user: UserDto) {
+  public updateUser(user: UserDto) {
     return this.http.put<ResponseDto<KeycloakUserDto>>(`${this.baseUrl}/users/profile`, user);
   }
 
-  public deleteUser(userId: String, user: UserDto) {
+  public deleteUser(user: UserDto) {
     return this.http.delete<ResponseDto<KeycloakUserDto>>(`${this.baseUrl}/users/profile`);
   }
 
-  public updatePassword(userId: String, user: UserDto) {
+  public updatePassword(user: UserDto) {
     return this.http.put<ResponseDto<String>>(`${this.baseUrl}/users/profile/password`, user);
   }
 }

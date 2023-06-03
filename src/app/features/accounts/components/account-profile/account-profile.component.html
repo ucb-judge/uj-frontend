@@ -12,16 +12,16 @@
 </mat-card>
 
 <mat-tab-group>
-  <mat-tab label="Profile Info">
+  <mat-tab label="Información de Perfil">
     <app-account-profile-info [keycloakUserDto]="keycloakUserDto" [campusMajorDto]="campusMajorDto"></app-account-profile-info>
   </mat-tab>
-  <mat-tab label="Update Info">
-    <app-account-profile-update></app-account-profile-update>
+  <mat-tab label="Actualizar Perfil">
+    <app-account-profile-update [userId]="userId"></app-account-profile-update>
   </mat-tab>
-  <mat-tab label="Change Password">
+  <mat-tab label="Cambiar Contraseña">
     <app-account-profile-change-password></app-account-profile-change-password>
   </mat-tab>
-  <mat-tab label="Delete Account">
+  <mat-tab label="Eliminar Cuenta">
     <app-account-profile-delete></app-account-profile-delete>
   </mat-tab>
 </mat-tab-group>
