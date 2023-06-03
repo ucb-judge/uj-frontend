@@ -15,12 +15,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {AccountProfileComponent} from "./components/account-profile/account-profile.component";
 
 @NgModule({
   declarations: [
     HomePageComponent,
     AccountRegisterComponent,
     AccountProfileUpdateComponent,
+    AccountProfileComponent
   ],
   imports: [
     CommonModule,
