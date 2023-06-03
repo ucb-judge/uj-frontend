@@ -46,7 +46,7 @@ export class UjUsersService {
   }
 
   public deleteUser(user: UserDto) {
-    return this.http.delete<ResponseDto<KeycloakUserDto>>(`${this.baseUrl}/users/profile`);
+    return this.http.request<ResponseDto<KeycloakUserDto>>('delete', `${this.baseUrl}/users/profile`, {body: user});
   }
 
   public updatePassword(user: UserDto) {
