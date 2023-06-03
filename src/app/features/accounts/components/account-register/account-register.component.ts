@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {UjCampusService} from "../../../../core/services/uj-campus.service";
-import {UjCampusMajorService} from "../../../../core/services/uj-campus-major.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CampusDto} from "../../models/campus.dto";
 import {CampusMajorDto} from "../../models/campus-major.dto";
 import {UjUsersService} from "../../../../core/services/uj-users.service";
@@ -18,12 +16,12 @@ export class AccountRegisterComponent implements OnInit {
   campuses: CampusDto[] = [];
   campusesMajors: CampusMajorDto[] = [];
   selectedCampusMajorId: number = 0;
+  hidePassword: boolean = true;
+  hideConfirmPassword: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
-    private ujCampusService: UjCampusService,
-    private ujCampusMajorService: UjCampusMajorService,
-    private userService: UjUsersService,
+    private ujUsersService: UjUsersService,
     private snackBar: MatSnackBar,
     private router: Router
   ) {
@@ -42,7 +40,7 @@ export class AccountRegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.ujCampusService.getCampuses().subscribe({
+    this.ujUsersService.getCampuses().subscribe({
       next: (data) => {
         // console.log(data);
         this.campuses = data.data!;
@@ -54,7 +52,7 @@ export class AccountRegisterComponent implements OnInit {
         console.log(error);
       },
     });
-    this.ujCampusMajorService.getMajorsByCampusId(1).subscribe({
+    this.ujUsersService.getMajorsByCampusId(1).subscribe({
       next: (data) => {
         // console.log(data);
         this.campusesMajors = data.data!;
@@ -72,7 +70,7 @@ export class AccountRegisterComponent implements OnInit {
   onCampusChange(event: any) {
     // console.log(event.value);
     // console.log('event :' + event.value);
-    this.ujCampusMajorService.getMajorsByCampusId(event.value).subscribe({
+    this.ujUsersService.getMajorsByCampusId(event.value).subscribe({
       next: (data) => {
         this.campusesMajors = data.data!;
         this.registerForm.patchValue({
@@ -108,7 +106,7 @@ export class AccountRegisterComponent implements OnInit {
       const formData = this.registerForm.value;
       formData.campusMajorId = this.selectedCampusMajorId;
       console.log(formData);
-      this.userService.createStudent(formData).subscribe({
+      this.ujUsersService.createStudent(formData).subscribe({
         next: (data) => {
           console.log(data);
           this.showMessage('Usuario creado correctamente');

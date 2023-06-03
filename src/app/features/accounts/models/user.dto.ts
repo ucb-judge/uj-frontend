@@ -6,4 +6,5 @@ export interface UserDto {
   password?: string;
   confirmPassword?: string;
   campusMajorId?: number;
+  currentPassword?: string;
 }

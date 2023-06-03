@@ -1,39 +1,29 @@
 <app-navbar></app-navbar>
 <mat-card class="info-card">
-  <mat-card-header>
-    <mat-card-title>Profile</mat-card-title>
-  </mat-card-header>
   <mat-card-content>
-    <mat-icon>person</mat-icon>
-    <h3>Name...</h3>
-    <p>Email</p>
+    <div class="profile-container">
+      <div class="profile-photo">{{ keycloakUserDto?.firstName?.charAt(0) }}{{ keycloakUserDto?.lastName?.charAt(0) }}</div>
+      <div class="profile-details">
+        <h3 class="name">{{keycloakUserDto?.firstName}} {{keycloakUserDto?.lastName}}</h3>
+        <p class="email">{{keycloakUserDto?.email}}</p>
+      </div>
+    </div>
   </mat-card-content>
 </mat-card>
-<!--space-->
-<div class="space"></div>
-<mat-toolbar>
-  <mat-tab-group>
-    <mat-tab label="Profile Info">
-      <mat-card class="menu-card">
-        <app-account-profile-info></app-account-profile-info>
-      </mat-card>
-    </mat-tab>
-    <mat-tab label="Update Info">
-      <mat-card class="menu-card">
-        <app-account-profile-update></app-account-profile-update>
-      </mat-card>
-    </mat-tab>
-    <mat-tab label="Change Password">
-      <mat-card class="menu-card">
-        <app-account-profile-change-password></app-account-profile-change-password>
-      </mat-card>
-    </mat-tab>
-    <mat-tab label="Delete Account">
-      <mat-card class="menu-card">
-        <app-account-profile-delete></app-account-profile-delete>
-      </mat-card>
-    </mat-tab>
-  </mat-tab-group>
-</mat-toolbar>
+
+<mat-tab-group>
+  <mat-tab label="Profile Info">
+    <app-account-profile-info [keycloakUserDto]="keycloakUserDto" [campusMajorDto]="campusMajorDto"></app-account-profile-info>
+  </mat-tab>
+  <mat-tab label="Update Info">
+    <app-account-profile-update></app-account-profile-update>
+  </mat-tab>
+  <mat-tab label="Change Password">
+    <app-account-profile-change-password></app-account-profile-change-password>
+  </mat-tab>
+  <mat-tab label="Delete Account">
+    <app-account-profile-delete></app-account-profile-delete>
+  </mat-tab>
+</mat-tab-group>
 
 

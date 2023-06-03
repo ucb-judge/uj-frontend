@@ -34,7 +34,6 @@ import {
     AccountProfileUpdateComponent,
     AccountProfileChangePasswordComponent,
     AccountProfileDeleteComponent
-
   ],
   imports: [
     CommonModule,
