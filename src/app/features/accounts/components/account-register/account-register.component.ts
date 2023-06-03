@@ -4,6 +4,7 @@ import {UjCampusService} from "../../../../core/services/uj-campus.service";
 import {UjCampusMajorService} from "../../../../core/services/uj-campus-major.service";
 import {CampusDto} from "../../models/campus.dto";
 import {CampusMajorDto} from "../../models/campus-major.dto";
+import {UjUsersService} from "../../../../core/services/uj-users.service";
 
 @Component({
   selector: 'app-account-register',
@@ -16,13 +17,13 @@ export class AccountRegisterComponent implements OnInit {
   campusesMajors: CampusMajorDto[] = [];
   selectedCampusMajorId: number = 0;
 
-  constructor(private formBuilder: FormBuilder, private ujCampusService: UjCampusService, private ujCampusMajorService: UjCampusMajorService) {
+  constructor(private formBuilder: FormBuilder, private ujCampusService: UjCampusService, private ujCampusMajorService: UjCampusMajorService, private userService: UjUsersService) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.min(10), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])')]],
+      password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]],
       campus: ['', Validators.required],
       major: ['', Validators.required],
@@ -83,9 +84,17 @@ export class AccountRegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-      // You can perform registration logic here
+      const formData = this.registerForm.value;
+      formData.campusMajorId = this.selectedCampusMajorId;
+      console.log(formData);
+      this.userService.createStudent(formData).subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        error: ({error}) => {
+          console.log(error.message);
+        }
+      });
     }
   }
-
 }
