@@ -14,7 +14,7 @@ export class AccountProfileDeleteComponent {
   deleteForm: FormGroup;
   homeUrl: string = `${environment.ANGULAR_URL}`;
   hideCurrentPassword: boolean = true;
-  deleteMessage: string = 'Deseo eliminar mi cuenta de UCB Judge de forma permanente';
+  deleteMessage: string = 'Deseo eliminar permanentemente mi cuenta de UCB Judge';
   constructor(
     public keycloakService: KeycloakService,
     private formBuilder: FormBuilder,
