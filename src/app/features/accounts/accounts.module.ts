@@ -16,13 +16,25 @@ import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {AccountProfileComponent} from "./components/account-profile/account-profile.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatTabsModule} from "@angular/material/tabs";
+import { AccountProfileDeleteComponent } from './components/account-profile-delete/account-profile-delete.component';
+import {AccountProfileInfoComponent} from "./components/account-profile-info/account-profile-info.component";
+import {
+  AccountProfileChangePasswordComponent
+} from "./components/account-profile-change-password/account-profile-change-password.component";
 
 @NgModule({
   declarations: [
     HomePageComponent,
     AccountRegisterComponent,
+    AccountProfileComponent,
+    AccountProfileInfoComponent,
     AccountProfileUpdateComponent,
-    AccountProfileComponent
+    AccountProfileChangePasswordComponent,
+    AccountProfileDeleteComponent
+
   ],
   imports: [
     CommonModule,
@@ -37,6 +49,9 @@ import {AccountProfileComponent} from "./components/account-profile/account-prof
     MatInputModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatTabsModule,
   ]
 })
 export class AccountsModule { }

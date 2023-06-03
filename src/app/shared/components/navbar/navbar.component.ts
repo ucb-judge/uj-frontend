@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 import {ConfirmationDialogComponent} from "../confirmation-dialog/confirmation-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-navbar',
@@ -11,6 +12,7 @@ import {MatDialog} from "@angular/material/dialog";
 export class NavbarComponent implements OnInit {
 
   isAuthenticated = false;
+  homeUrl: string = `${environment.ANGULAR_URL}`;
 
   constructor(public keycloakService: KeycloakService, private dialog: MatDialog) { }
 
@@ -26,7 +28,7 @@ export class NavbarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.keycloakService.logout('http://localhost:4200/');
+        this.keycloakService.logout(this.homeUrl).then(r => console.log(r));
       }
     });
   }

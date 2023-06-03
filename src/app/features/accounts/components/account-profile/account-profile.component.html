@@ -1,1 +1,39 @@
 <app-navbar></app-navbar>
+<mat-card class="info-card">
+  <mat-card-header>
+    <mat-card-title>Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-icon>person</mat-icon>
+    <h3>Name...</h3>
+    <p>Email</p>
+  </mat-card-content>
+</mat-card>
+<!--space-->
+<div class="space"></div>
+<mat-toolbar>
+  <mat-tab-group>
+    <mat-tab label="Profile Info">
+      <mat-card class="menu-card">
+        <app-account-profile-info></app-account-profile-info>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Update Info">
+      <mat-card class="menu-card">
+        <app-account-profile-update></app-account-profile-update>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Change Password">
+      <mat-card class="menu-card">
+        <app-account-profile-change-password></app-account-profile-change-password>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="Delete Account">
+      <mat-card class="menu-card">
+        <app-account-profile-delete></app-account-profile-delete>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+</mat-toolbar>
+
+

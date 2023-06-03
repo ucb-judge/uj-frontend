@@ -1,0 +1,30 @@
+.info-card {
+  margin: 30px !important;
+  display: flex;
+  width: auto;
+  padding: 20px;
+  text-align: start;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.space{
+  margin: 10px;
+  display: flex;
+  width: auto;
+  padding: 20px;
+  text-align: start;
+  box-shadow: none;
+}
+
+mat-toolbar{
+  background-color: #fff;
+  color: #000;
+}
+mat-tab-group{
+  margin: 30px 15px;
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  text-align: start;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
