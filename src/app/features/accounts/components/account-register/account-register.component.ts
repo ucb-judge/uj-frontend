@@ -5,6 +5,8 @@ import {UjCampusMajorService} from "../../../../core/services/uj-campus-major.se
 import {CampusDto} from "../../models/campus.dto";
 import {CampusMajorDto} from "../../models/campus-major.dto";
 import {UjUsersService} from "../../../../core/services/uj-users.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-register',
@@ -17,7 +19,14 @@ export class AccountRegisterComponent implements OnInit {
   campusesMajors: CampusMajorDto[] = [];
   selectedCampusMajorId: number = 0;
 
-  constructor(private formBuilder: FormBuilder, private ujCampusService: UjCampusService, private ujCampusMajorService: UjCampusMajorService, private userService: UjUsersService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private ujCampusService: UjCampusService,
+    private ujCampusMajorService: UjCampusMajorService,
+    private userService: UjUsersService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -28,6 +37,8 @@ export class AccountRegisterComponent implements OnInit {
       campus: ['', Validators.required],
       major: ['', Validators.required],
     });
+
+
   }
 
   ngOnInit(): void {
@@ -59,8 +70,8 @@ export class AccountRegisterComponent implements OnInit {
   }
 
   onCampusChange(event: any) {
-    console.log(event.value);
-    console.log('event :' + event.value);
+    // console.log(event.value);
+    // console.log('event :' + event.value);
     this.ujCampusMajorService.getMajorsByCampusId(event.value).subscribe({
       next: (data) => {
         this.campusesMajors = data.data!;
@@ -79,20 +90,35 @@ export class AccountRegisterComponent implements OnInit {
     // console.log('event :' + event);
     // console.log(event.value);
     this.selectedCampusMajorId = event.value;
-    console.log(this.selectedCampusMajorId);
+    // console.log(this.selectedCampusMajorId);
+  }
+
+  showMessage(message: string) {
+    this.snackBar.open(message, 'Cerrar', {
+      duration: 3000, // Duration in milliseconds
+    });
   }
 
   onSubmit() {
     if (this.registerForm.valid) {
+      if (this.registerForm.value.password !== this.registerForm.value.confirmPassword) {
+        this.showMessage('Error: Las contraseñas no coinciden');
+        return;
+      }
       const formData = this.registerForm.value;
       formData.campusMajorId = this.selectedCampusMajorId;
       console.log(formData);
       this.userService.createStudent(formData).subscribe({
         next: (data) => {
           console.log(data);
+          this.showMessage('Usuario creado correctamente');
+          setTimeout(() => {
+            this.router.navigate(['/problems']).then(r => console.log(r));
+          }, 1000);
         },
         error: ({error}) => {
           console.log(error.message);
+          this.showMessage(`Error: ${error.message} `);
         }
       });
     }
