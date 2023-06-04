@@ -58,7 +58,7 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Sede</mat-label>
-            <mat-select formControlName="campus" placeholder="Campus" (selectionChange)="onCampusChange($event)">
+            <mat-select formControlName="campus" placeholder="Sede" (selectionChange)="onCampusChange($event)">
               <mat-option *ngFor="let campus of campuses" [value]="campus.campusId" >
                 {{ campus.name }}
               </mat-option>
@@ -66,7 +66,7 @@
           </mat-form-field>
           <mat-form-field>
             <mat-label>Carrera</mat-label>
-            <mat-select formControlName="major" placeholder="Major" (selectionChange)="onMajorChange($event)">
+            <mat-select formControlName="major" placeholder="Carrera" (selectionChange)="onMajorChange($event)">
               <mat-option *ngFor="let campusMajor of campusesMajors" [value]="campusMajor.campusMajorId" >
                 {{ campusMajor.major.name }}
               </mat-option>
