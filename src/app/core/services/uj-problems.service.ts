@@ -22,4 +22,9 @@ export class UjProblemsService {
   public getProblemById(id: number): Observable<ResponseDto<ProblemDto>> {
     return this.http.get<ResponseDto<ProblemDto>>(`${this.baseUrl}/${id}`);
   }
+
+  public getAllPublicProblems(page: number = 0, size: number = 10): Observable<ResponseDto<PageDto<ProblemTableDataDto>>> {
+    return this.http.get<ResponseDto<PageDto<ProblemTableDataDto>>>(`${this.baseUrl}/public?page=${page}&size=${size}`);
+  }
 }
+

@@ -24,6 +24,7 @@ import {AccountProfileInfoComponent} from "./components/account-profile-info/acc
 import {
   AccountProfileChangePasswordComponent
 } from "./components/account-profile-change-password/account-profile-change-password.component";
+import { AccountProfileSubmissionsComponent } from './components/account-profile-submissions/account-profile-submissions.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {
     AccountProfileInfoComponent,
     AccountProfileUpdateComponent,
     AccountProfileChangePasswordComponent,
-    AccountProfileDeleteComponent
+    AccountProfileDeleteComponent,
+    AccountProfileSubmissionsComponent
   ],
   imports: [
     CommonModule,

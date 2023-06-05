@@ -12,6 +12,9 @@
 </mat-card>
 
 <mat-tab-group>
+  <mat-tab label="Problemas Resueltos">
+    <app-account-profile-submissions></app-account-profile-submissions>
+  </mat-tab>
   <mat-tab label="Información de Perfil">
     <app-account-profile-info [keycloakUserDto]="keycloakUserDto" [campusMajorDto]="campusMajorDto"></app-account-profile-info>
   </mat-tab>
