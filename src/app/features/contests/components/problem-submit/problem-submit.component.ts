@@ -93,7 +93,7 @@ export class ProblemSubmitComponent implements OnInit {
   submitForm() {
     this.ujSubmissionsService.createSubmission(this.submissionForm.value).subscribe({
       next: (response) => {
-        this.router.navigate([`/submissions/${response.data}`]);
+        window.open(`/submissions/${response.data}`, "_blank")
       },
       error: (error) => {
         console.error(error);
