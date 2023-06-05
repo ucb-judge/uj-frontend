@@ -17,6 +17,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {ReactiveFormsModule} from "@angular/forms";
+import { RankingComponent } from './components/ranking/ranking.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     SignupComponent,
     ProblemListComponent,
     ProblemDetailsComponent,
-    ProblemSubmitComponent
+    ProblemSubmitComponent,
+    RankingComponent
   ],
   imports: [
     CommonModule,
