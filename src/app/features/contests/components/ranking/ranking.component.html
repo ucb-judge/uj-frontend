@@ -1,4 +1,25 @@
 <app-navbar></app-navbar>
 <div class="container">
+  <h1>Ranking - {{contest.name}}</h1>
+  <div class="mat-elevation-z8 ranking-table">
+    <table mat-table [dataSource]="ranking">
+      <ng-container matColumnDef="rank">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{element.rank}}</td>
+      </ng-container>
 
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{element.student.firstName + ' ' + element.student.lastName}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="problemsSolved">
+        <th mat-header-cell *matHeaderCellDef>Problemas Resueltos</th>
+        <td mat-cell *matCellDef="let element">{{element.problemsSolved}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['rank', 'name', 'problemsSolved']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['rank', 'name', 'problemsSolved'];"></tr>
+    </table>
+  </div>
 </div>

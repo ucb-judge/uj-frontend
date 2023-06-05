@@ -5,6 +5,7 @@ import {ContestDto} from "../../features/contests/models/contest.dto";
 import {ResponseDto} from "../models/response.dto";
 import {Observable} from "rxjs";
 import {ProblemDto} from "../../features/problems/models/problem.dto";
+import {ContestScoreboardDto} from "../../features/contests/models/contest.scoreboard.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,9 @@ export class UjContestsService {
 
   public getContestProblemsById(id: number): Observable<ResponseDto<ProblemDto[]>> {
     return this.http.get<ResponseDto<ProblemDto[]>>(`${this.baseUrl}/${id}/problems`);
+  }
+
+  public getScoreboardByContestId(id: number): Observable<ResponseDto<ContestScoreboardDto[]>> {
+    return this.http.get<ResponseDto<ContestScoreboardDto[]>>(`${this.baseUrl}/${id}/scoreboard`);
   }
 }
