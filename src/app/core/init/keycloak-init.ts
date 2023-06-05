@@ -22,7 +22,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
       config: {
         url: 'http://localhost:8090',
         realm: 'ucb-judge',
-        clientId: 'frontend',
+        clientId: 'uj-frontend',
       },
       initOptions: {
         onLoad: 'check-sso',
