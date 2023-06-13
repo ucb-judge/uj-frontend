@@ -59,7 +59,6 @@ export class AccountProfileUpdateComponent implements OnInit {
         },
         error: ({error}) => {
           console.log(error.message);
-          this.showMessage(`Error: ${error.message}`);
         },
       });
     }

@@ -50,7 +50,6 @@ export class AccountProfileDeleteComponent {
         },
         error: ({error}) => {
           console.log(error.message);
-          this.showMessage(`Error: ${error.message}`);
         },
       });
     }

@@ -9,7 +9,8 @@ import { AccountsModule } from "./features/accounts/accounts.module";
 import { ContestsModule } from "./features/contests/contests.module";
 import { KeycloakAngularModule, KeycloakService } from "keycloak-angular";
 import { initializer } from "./core/init/keycloak-init";
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {ErrorInterceptor} from "./core/interceptors/error-interceptor";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,12 @@ import { HttpClientModule } from "@angular/common/http";
       useFactory: initializer,
       multi: true,
       deps: [KeycloakService]
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
   ],
   exports: [],
   bootstrap: [AppComponent]

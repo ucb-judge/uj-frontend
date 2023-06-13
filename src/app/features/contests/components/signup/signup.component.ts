@@ -25,6 +25,7 @@ export class SignupComponent {
         this.dialogRef.close()
       },
       error: (error) => {
+
         console.log(error);
       }
     });

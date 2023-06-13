@@ -61,6 +61,9 @@ export class RankingComponent implements OnInit, OnDestroy {
         }
       },
       error: (error) => {
+        this.rankingInterval.clearInterval(
+          this.rankingInterval
+        );
         console.log(error);
       }
     });

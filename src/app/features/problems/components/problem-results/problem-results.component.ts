@@ -95,6 +95,7 @@ export class ProblemResultsComponent implements OnInit {
         this.totalTestcases = this.submissionStatus.testcaseCount;
       },
       error: (error) => {
+        this.isDone = true;
         console.log(error);
       }
     });
