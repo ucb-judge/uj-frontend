@@ -57,3 +57,13 @@
     margin-top: 32px;
     margin-bottom: 32px;
 }
+
+.input-details {
+    white-space: pre-line;
+    width: 66%;
+}
+
+.output-details {
+    white-space: pre-line;
+    width: 33%;
+}
